@@ -1,0 +1,6 @@
+/Users/mac/RiderProjects/Lab2/ObjectArray/bin/Debug/ObjectArray.exe
+/Users/mac/RiderProjects/Lab2/ObjectArray/bin/Debug/ObjectArray.pdb
+/Users/mac/RiderProjects/Lab2/ObjectArray/obj/Debug/ObjectArray.csprojAssemblyReference.cache
+/Users/mac/RiderProjects/Lab2/ObjectArray/obj/Debug/ObjectArray.csproj.CoreCompileInputs.cache
+/Users/mac/RiderProjects/Lab2/ObjectArray/obj/Debug/ObjectArray.exe
+/Users/mac/RiderProjects/Lab2/ObjectArray/obj/Debug/ObjectArray.pdb

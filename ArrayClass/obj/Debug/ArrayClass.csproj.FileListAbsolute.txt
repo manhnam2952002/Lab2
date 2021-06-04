@@ -1,0 +1,6 @@
+/Users/mac/RiderProjects/Lab2/ArrayClass/bin/Debug/ArrayClass.exe
+/Users/mac/RiderProjects/Lab2/ArrayClass/bin/Debug/ArrayClass.pdb
+/Users/mac/RiderProjects/Lab2/ArrayClass/obj/Debug/ArrayClass.csprojAssemblyReference.cache
+/Users/mac/RiderProjects/Lab2/ArrayClass/obj/Debug/ArrayClass.csproj.CoreCompileInputs.cache
+/Users/mac/RiderProjects/Lab2/ArrayClass/obj/Debug/ArrayClass.exe
+/Users/mac/RiderProjects/Lab2/ArrayClass/obj/Debug/ArrayClass.pdb

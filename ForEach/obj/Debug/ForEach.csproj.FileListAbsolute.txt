@@ -1,0 +1,6 @@
+/Users/mac/RiderProjects/Lab2/ForEach/bin/Debug/ForEach.exe
+/Users/mac/RiderProjects/Lab2/ForEach/bin/Debug/ForEach.pdb
+/Users/mac/RiderProjects/Lab2/ForEach/obj/Debug/ForEach.csprojAssemblyReference.cache
+/Users/mac/RiderProjects/Lab2/ForEach/obj/Debug/ForEach.csproj.CoreCompileInputs.cache
+/Users/mac/RiderProjects/Lab2/ForEach/obj/Debug/ForEach.exe
+/Users/mac/RiderProjects/Lab2/ForEach/obj/Debug/ForEach.pdb
