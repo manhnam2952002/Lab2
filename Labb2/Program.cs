@@ -4,94 +4,80 @@ using System.Linq;
 
 namespace Labb2
 {
-    class CanadaSIN
-    {
-        public static void Run()
-        {
-            List<int> num = new List<int>();
-            Console.WriteLine("Please enter 9 digits number: ");
-            do
-            {
-                int addNumber = 1;
-                try
-                {
-                    addNumber = Int32.Parse(Console.ReadLine());
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("Please don't enter null \n");
-                    return;
-                }
-
-                if (0 < addNumber && addNumber <= 9)
-                {
-                    num.Add(addNumber);
-                }
-                else
-                {
-                    Console.WriteLine("Exceed number from 1 - 9");
-                }
-            } while (num.Count <= 8);
-            
-            //9 digits
-            Console.WriteLine("Your SIN: ");
-            foreach (int obj in num )
-            {
-                Console.WriteLine(obj);
-            }
-            Console.WriteLine("");
-            
-            //add
-            int p1 = num[1] + num[1];
-            int p2 = num[3] + num[3];
-            int p3 = num[5] + num[5];
-            int p4 = num[7] + num[7];
-
-            int[] d1 = p1.ToString().ToCharArray().Select(x => (int) Char.GetNumericValue(x)).ToArray();
-            int[] d2 = p2.ToString().ToCharArray().Select(x => (int) Char.GetNumericValue(x)).ToArray();
-            int[] d3 = p3.ToString().ToCharArray().Select(x => (int) Char.GetNumericValue(x)).ToArray();
-            int[] d4 = p4.ToString().ToCharArray().Select(x => (int) Char.GetNumericValue(x)).ToArray();
-
-            int[] Pair;
-            Pair = d1.Concat(d2).Concat(d3).Concat(d4).ToArray();
-            Console.WriteLine("");
-
-            int totalDigit = Pair.Sum();
-            int overDigit = num[0] + num[2] + num[4] + num[6];
-            int fTotal = totalDigit + overDigit;
-            int temp = 1;
-            int hightInteger = 10;
-            while (temp * 10 <= fTotal)
-            {
-                temp++;
-            }
-
-            hightInteger *= temp;
-
-            if (hightInteger - fTotal != num[8])
-            {
-                Console.WriteLine("This is not a valid Sin!");
-            }
-            else
-            {
-                Console.WriteLine("This is a valid Sin!");
-            }
-            Console.WriteLine(""); 
-        }
-        
-    }
     internal class Program
     {
         public static void Main(string[] args)
         {
-            int choice = 0;
-            do
+            Console.WriteLine("Sin validator");
+            Console.WriteLine("==============");
+            while (true)
             {
-                CanadaSIN.Run();
-                Console.WriteLine("Do you want to restart? (Y = 1 - N = 0");
-                Console.WriteLine("Your choice:");
-                choice = Int32.Parse(Console.ReadLine());
-            } while (choice != 0);
+                Console.WriteLine("SIN (0 to quit):");
+                var sin = Console.ReadLine();
+                if (sin != null && sin.Equals("0"))
+                {
+                    Console.WriteLine("Have a nice day!");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine(CheckValidSin(sin) ? "This is a valid SIN." : "This is not a valid SIN");
+                }
+            }
+        }
+
+        public static bool CheckValidSin(string sin)
+        {
+
+            int lastNumber = 0;
+            var totalEvenLineNumber = 0;
+            var totalOddLineNumber = 0;
+            //chuyển chuỗi thành mảng các char
+            var sinCharArray = sin.ToCharArray();
+            int[] numberOfSin = new int[9]; //khởi tạo mảng 9 số
+            int currentIndexOfNumberArray = 0;
+            for (int i = 0; i < sinCharArray.Length; i++)
+            {
+                //kh khởi tạo thì bỏ qua 
+                if (sinCharArray[i].ToString().Trim().Length == 0)
+                {
+                    continue;
+                }
+
+                numberOfSin[currentIndexOfNumberArray] = Convert.ToInt32(sinCharArray[i].ToString());
+                currentIndexOfNumberArray++;
+            }
+            lastNumber = numberOfSin[currentIndexOfNumberArray - 1];
+
+            for (int i = 0; i < numberOfSin.Length - 1; i++)
+            {
+                if ((i + 1) % 2 != 0)
+                {
+                    totalOddLineNumber += numberOfSin[i];
+                }
+                else
+                {
+                    var doubleOdNumber = numberOfSin[i] * 2;
+                    var charArray = doubleOdNumber.ToString().ToCharArray();
+                    for (int j = 0; j < charArray.Length; j++)
+                    {
+                        totalEvenLineNumber += Convert.ToInt32(charArray[j].ToString());
+                    }
+                }
+
+                Console.WriteLine(numberOfSin[i]);
+            }
+
+            Console.WriteLine($"last number = {lastNumber}");
+
+            var total2line = totalOddLineNumber + totalEvenLineNumber;
+            var nextHighestNumberEndingInZero = Math.Ceiling(Convert.ToDouble(total2line) / 10) * 10;
+            if (Math.Abs(nextHighestNumberEndingInZero - total2line - lastNumber) == 0)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
